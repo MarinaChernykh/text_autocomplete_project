@@ -1,5 +1,5 @@
 # Режим отладки проекта
-debug: True
+debug: False
 debug_version_dataset_size: 1000
 
 # Пути файлов
@@ -8,6 +8,7 @@ clean_dataset_path: "./data/clean_dataset.csv"
 train_dataset_path: "./data/train_dataset.csv"
 val_dataset_path: "./data/val_dataset.csv"
 test_dataset_path: "./data/test_dataset.csv"
+model_save_path: "./models/lstm_model.pth"
 
 # Разделение и подготовка данных
 val_size: 0.1

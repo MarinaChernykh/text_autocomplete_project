@@ -65,7 +65,7 @@ def show_autocomplete_transformer(model, tokenized_texts, n_samples, params):
         with torch.no_grad():
             generated = model.generate(
                 input_tensor,
-                max_new_tokens=params["max_new_tokens"],
+                max_new_tokens=len(target),
                 temperature=params["temperature"],
                 top_k=params["top_k"],
                 pad_token_id=tokenizer.eos_token_id
