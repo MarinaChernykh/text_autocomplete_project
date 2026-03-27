@@ -65,7 +65,7 @@ def show_autocomplete_transformer(model, tokenized_texts, n_samples, params):
         with torch.no_grad():
             generated = model.generate(
                 input_tensor,
-                max_new_tokens=len(target),
+                max_new_tokens=params["max_new_tokens"],
                 temperature=params["temperature"],
                 top_k=params["top_k"],
                 pad_token_id=tokenizer.eos_token_id
@@ -74,9 +74,9 @@ def show_autocomplete_transformer(model, tokenized_texts, n_samples, params):
         generated_seq = generated[0].cpu().tolist()
 
         print("Полный исходный текст      :", tokenizer.decode(text, skip_special_tokens=True))
-        print("Полный предсказанный текст :", tokenizer.decode(generated_seq, skip_special_tokens=True))
+        print("Полный предсказанный текст :", tokenizer.decode(generated_seq, skip_special_tokens=True).strip())
         print()
         print("Часть для дополнения       :", tokenizer.decode(input, skip_special_tokens=True))
         print("Правильный ответ           :", tokenizer.decode(target, skip_special_tokens=True))
-        print("Предсказанный ответ        :", tokenizer.decode(generated_seq[len(input):], skip_special_tokens=True))
+        print("Предсказанный ответ        :", tokenizer.decode(generated_seq[len(input):], skip_special_tokens=True).strip())
         print("===" * 50)
